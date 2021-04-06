@@ -1,14 +1,14 @@
 class PolyTreeNode
     attr_reader :parent, :children, :value
 
-    def initialize(value) #value could be starting position or something else 
+    def initialize(value)
         @value = value
         @parent = nil
         @children = []
     end
 
-    
-    def parent=(other_node)
+    # child_node.parent = other_node
+    def parent=(other_node) #this call on the child. other_node is parent.
         unless other_node == nil
             @parent.children.reject! { |ele| ele == self } if @parent != nil
             @parent = other_node
@@ -20,7 +20,7 @@ class PolyTreeNode
         end 
     end
 
-    def add_child(child_node) # this will be used in build_tree
+    def add_child(child_node)
         child_node.parent = self
     end
 
@@ -33,7 +33,7 @@ class PolyTreeNode
         value
     end
 
-    def dfs(target_value) #we will want to use this in our method (require relative as well)
+    def dfs(target_value)
         return self if self.value == target_value
               
         self.children.each do |child|
