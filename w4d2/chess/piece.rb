@@ -4,4 +4,8 @@ class Piece
 
     end
 
+    def move
+    
+    end
+
 end

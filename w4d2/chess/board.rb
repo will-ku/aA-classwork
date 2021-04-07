@@ -9,7 +9,7 @@ class Board
         @board = Array.new(8) { [:N] * 8 }
     end
     
-    def [](pos)
+    def [](pos)  
         x,y = pos
         @board[x][y]
     end
@@ -22,15 +22,15 @@ class Board
     def move_piece(start_pos, end_pos)
         x, y = start_pos
         w, z = end_pos
-        if board[x][y] == [] #might be changed to null piece
+        if board[x][y] == :N #might be changed to null piece
             raise "No piece at #{start_pos}"
         end
-        if !valid_move?(end_pos)
+        if !valid_pos?(end_pos)
             raise "Invalid end_pos"
         end     
  
         piece = board[x][y]
-        board[x][y] = [] #might be changed to null piece 
+        board[x][y] = :N #might be changed to null piece 
         board[w][z] = piece
    end
  
