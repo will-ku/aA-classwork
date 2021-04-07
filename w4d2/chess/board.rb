@@ -1,5 +1,7 @@
 require_relative "piece"
  
+require_relative "null_piece"
+
 class Board
     # rows, cols = x,y  # your values
     # grid = Array.new(rows) { Array.new(cols) }
