@@ -3,8 +3,13 @@ require_relative "slideable"
 
 class Bishop
     include Slideable
-    def initialize
 
+    def initialize(color,board, pos)
+        super
+    end
+
+    def symbol
+        "B".colorize(color)
     end
 
     private 

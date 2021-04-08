@@ -1,8 +1,15 @@
+require_relative "piece"
+require_relative "slideable"
 
 class Rook
     include Slideable
-    def initialize
-    
+
+    def initialize(color,board, pos)
+        super
+    end
+
+    def symbol
+        "R".colorize(color)
     end
 
     private 

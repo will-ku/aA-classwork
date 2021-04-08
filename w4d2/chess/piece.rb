@@ -1,10 +1,20 @@
-class Piece
+require "colorize"
 
-    def initialize(color,board, pos)
+class Piece
+    attr_reader :color
+
+    def initialize(color,board=nil, pos=nil)
         @color = color
         @board = board
         @pos = pos
+    end
 
+    def symbol
+        
+    end
+
+    def inspect
+        self.color
     end
 
     def empty?(pos)
@@ -16,6 +26,6 @@ class Piece
     
     end
 
-    def valid_move?(pos)
+    # def valid_move?(pos)
 
 end
