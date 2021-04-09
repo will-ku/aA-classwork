@@ -38,5 +38,17 @@ def first_anagram?(str1,str2)
 
 end
     
-p first_anagram?("gizmo", "sally")    #=> false
-p first_anagram?("elvis", "lives")    #=> true
+# p first_anagram?("gizmo", "sally")    #=> false
+
+def second_anagram(str1, str2)
+    str2 = str2.split('')
+    
+    str1.each_char do |char|
+        idx = str2.find_index(char)
+        str2.delete_at(idx)
+    end
+    
+    str2.empty?
+end
+
+p second_anagram("elvis", "lives")    #=> true
