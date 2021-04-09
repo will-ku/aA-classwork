@@ -61,20 +61,19 @@ end
 # end
 
 #polynomial
-# def largest_contiguous_subsum(list)
-#     outer_arr = [] 
+def largest_contiguous_subsum(list)
+    outer_arr = [] 
 
-#     (0...list.length).each do |i| 
-#         outer_arr << [list[i]]
-#         (i+1...list.length).each do |j| 
-#             outer_arr << list[i..j]
-#         end
-#     end
-#
- #   
-#     outer_arr.map! { |arr| arr.sum } 
-#     outer_arr.max
-# end 
+    (0...list.length).each do |i| # n 
+        outer_arr << [list[i]] 
+        (i+1...list.length).each do |j|  #n
+            outer_arr << list[i..j] #n
+        end
+    end
+    # 67-73 = n^3
+    outer_arr.map! { |arr| arr.sum } # worst case scenario for mapping is n ^ 2
+    outer_arr.max # n^3 + n^2 + n 
+end 
 
 
 def largest_contiguous_subsum(list)

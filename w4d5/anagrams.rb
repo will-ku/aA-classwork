@@ -40,7 +40,7 @@ end
     
 # p first_anagram?("gizmo", "sally")    #=> false
 
-def second_anagram(str1, str2)
+def second_anagram?(str1, str2)
     str2 = str2.split('')
     
     str1.each_char do |char|
@@ -51,4 +51,33 @@ def second_anagram(str1, str2)
     str2.empty?
 end
 
-p second_anagram("elvis", "lives")    #=> true
+def third_anagram?(str1,str2)
+    # alpha = ('a'..'z').to_a
+    # str1 = str1.split("")
+    # str2 = str2.split("")
+
+    str1 = str1.chars.sort # n log n
+    str2 = str2.chars.sort # n log n + n log n = 2(n log n) ?
+    str1 == str2
+
+    # alpha.each do |char| # n
+    #     if str1.include?(char) # * n
+    #         # str1.delete(char)
+    #         idx = str1.find_index(char) # n
+    #         str1.delete_at(idx) # 0
+    #         str1.unshift(char) # 0
+    #     end
+
+    #     if str2.include?(char) # n
+    #         idx = str2.find_index(char) # n
+    #         str2.delete_at(idx) # 0
+    #         str2.unshift(char) # 0
+    #     end
+    # end
+    # p str1
+    # str1 == str2 # 1
+    # n ^ 5
+end
+
+p third_anagram?("elvevis", "lvieves")    #=> true
+p third_anagram?("gizmo", "sally")    #=> false
