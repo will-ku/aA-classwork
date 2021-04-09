@@ -41,6 +41,35 @@ describe '#my_transpose' do
 end
 
 describe '#stock_picker' do
+    subject(:arr) {[1, 2, 6, 4, 5]}
 
+    it "returns pair of days to buy/sell at highest profit" do
+        expect(stock_picker(arr)).to eq([0,2])
+    end
+
+
+
+    it "should only return one pair of days" do
+        expect(stock_picker(arr).length).to eq(2)
+        expect(stock_picker(arr)[0].is_a?(Integer)).to eq(true)
+    end
+
+end
+
+describe '#move' do 
+    let(:arr1) {[4, 3]}
+    let(:arr2) {[2]}
+
+    it "should push a disc into an array if disc is smaller than last element of array" do
+        expect(move(arr1, arr2)).to eq([[4, 3, 2], []])
+    end
+
+    it "should raise error if adding a bigger disc on top of a smaller one" do
+        expect{move(arr2, arr1)}.to raise_error("invalid move")
+    end
+
+end
+
+describe '#won?'
 
 end
