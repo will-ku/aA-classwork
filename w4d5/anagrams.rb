@@ -52,13 +52,15 @@ def second_anagram?(str1, str2)
 end
 
 def third_anagram?(str1,str2)
-    # alpha = ('a'..'z').to_a
-    # str1 = str1.split("")
-    # str2 = str2.split("")
-
+    # Big O analysis for this problem: n log n
     str1 = str1.chars.sort # n log n
     str2 = str2.chars.sort # n log n + n log n = 2(n log n) ?
     str1 == str2
+end
+
+    # alpha = ('a'..'z').to_a
+    # str1 = str1.split("")
+    # str2 = str2.split("")
 
     # alpha.each do |char| # n
     #     if str1.include?(char) # * n
@@ -77,7 +79,6 @@ def third_anagram?(str1,str2)
     # p str1
     # str1 == str2 # 1
     # n ^ 5
-end
 
 p third_anagram?("elvevis", "lvieves")    #=> true
 p third_anagram?("gizmo", "sally")    #=> false

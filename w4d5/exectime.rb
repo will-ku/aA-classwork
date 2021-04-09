@@ -60,7 +60,7 @@ end
 #     return outer_arr.max.to_i
 # end
 
-#polynomial
+# Big O analysis: polynomial
 def largest_contiguous_subsum(list)
     outer_arr = [] 
 
@@ -72,32 +72,36 @@ def largest_contiguous_subsum(list)
     end
     # 67-73 = n^3
     outer_arr.map! { |arr| arr.sum } # worst case scenario for mapping is n ^ 2
-    outer_arr.max # n^3 + n^2 + n 
+    outer_arr.max # n^3 + n^2 + n .. final would be O(n^3)
 end 
 
 
 def largest_contiguous_subsum(list)
-    largest_sum = 0
-    current = 0
+    largest_sum = 0 # 5 
+    current = 0  # 2 --> (2+3)=5 ... 5 + -6 = -1
 
-    list.each.with_index do |num, i|
-        current += num
+    (0...list.length).each do |i|
+
+        current += list[i]
+
         if  current > largest_sum
             largest_sum = current
-        else
+        elsif current < 0 # any negative number would equate to a smaller sum
             current = 0
         end
     end
 
     largest_sum
 end
+# list = [5, 3, -7]
+# p largest_contiguous_subsum(list)
 
-list = [2, 3, -6, 7, -6, 7]
-p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
+# list = [2, 3, -6, 100, -6, 7]
+# p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
 
 
-list = [5, 3, -7]
-largest_contiguous_subsum(list) # => 8
+# list = [-5, -3, -7]
+# largest_contiguous_subsum(list) # => 8
     # # possible sub-sums
     # [5]           # => 5
     # [5, 3]        # => 8 --> we want this one
