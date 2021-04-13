@@ -73,7 +73,7 @@ def name_and_population
   FROM
     countries
   WHERE
-    name = 'France' OR name = 'Germany' OR name = 'Italy';
+    name in ('France', 'Germany', 'Italy');
   SQL
 end
 
