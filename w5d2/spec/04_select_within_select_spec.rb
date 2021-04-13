@@ -16,6 +16,13 @@ describe "SELECT within SELECT" do
     end
   end
 
+
+  #  name        :string       not null, primary key
+#  continent   :string
+#  area        :integer
+#  population  :integer
+#  gdp         :integer
+
   describe "richer_than_england" do
     it "selects countries with a higher per capita GDP than the UK" do
       expect(richer_than_england).to contain_exactly(
