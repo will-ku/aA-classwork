@@ -1,4 +1,5 @@
 p "hello"
+p "b"
 
 class PolyTreeNode
     attr_reader :parent, :children, :value
