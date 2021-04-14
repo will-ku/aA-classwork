@@ -24,7 +24,7 @@ CREATE TABLE questions (
 INSERT INTO
     questions (title,body,author_id)
 SELECT 
-    'Will K', 'THIS IS THE BODY', 1
+    'Will K Question', 'THIS IS THE BODY', 1
 FROM
     users
 WHERE 
@@ -32,13 +32,11 @@ WHERE
 INSERT INTO
     questions (title,body,author_id)
 SELECT 
-    'Marcus Q', 'THIS IS THE BODY', 2
+    'Marcus Q Question', 'THIS IS THE BODY', 2
 FROM
     users
 WHERE 
     user.fname = "Marcus" AND user.lname = "Q";
-
-
 
 
 CREATE TABLE question_follows (
@@ -48,6 +46,16 @@ CREATE TABLE question_follows (
 
     FOREIGN KEY (question_id) REFERENCES questions(id)
     FOREIGN KEY (follower_id) REFERENCES users(id)
+);
+
+INSERT INTO
+    question_follows(question_id,user_id)
+VALUES
+  ((SELECT id FROM users WHERE fname = "Will" AND lname = "K"),
+  (SELECT id FROM questions WHERE title = "Will K Question")),
+
+  ((SELECT id FROM users WHERE fname = "Marcus" AND lname = "Q"),
+  (SELECT id FROM questions WHERE title = "Marcus Q Question")
 );
 
 CREATE TABLE replies (
@@ -63,7 +71,12 @@ CREATE TABLE replies (
 );
 
 INSERT INTO
-    question_follows
+  replies (question_id, parent_reply_id, author_id, body)
+VALUES
+  ((SELECT id FROM questions WHERE title = "Marcus Q Question"),
+  NULL,
+  (SELECT id FROM users WHERE fname = "Marcus" AND lname = "K"),
+  "What color is your car?");
 
 CREATE TABLE question_likes (
     id INTEGER PRIMARY KEY,
@@ -74,3 +87,8 @@ CREATE TABLE question_likes (
     FOREIGN KEY (question_id) REFERENCES questions(id)
 );
 
+INSERT INTO
+  question_likes (user_id, question_id)
+VALUES
+  ((SELECT id FROM users WHERE fname = "Marcus" AND lname = "Q"),
+  (SELECT id FROM questions WHERE title = "Marcus Q Question");
