@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: courses
+#
+#  id            :bigint           not null, primary key
+#  name          :string
+#  prereq_id     :integer
+#  instructor_id :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  If the foreign key is on that table, then it should be belongs_to
 class Course < ApplicationRecord
 
     has_many :enrollments,
@@ -13,5 +24,10 @@ class Course < ApplicationRecord
         primary_key: :id,
         foreign_key: :prereq_id,
         class_name: :Course
+
+    belongs_to :instructor,
+        primary_key: :id,
+        foreign_key: :instructor_id,
+        class_name: :User
 
 end
