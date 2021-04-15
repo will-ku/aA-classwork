@@ -1,11 +1,11 @@
 class Enrollment < ApplicationRecord
 
-   has_many :students,
+   belongs_to :user,
         primary_key: :id,
         foreign_key: :student_id,
-        class_name: :Student
+        class_name: :User
 
-   has_many :courses,
+   belongs_to :course,
         primary_key: :id,
         foreign_key: :course_id,
         class_name: :Course

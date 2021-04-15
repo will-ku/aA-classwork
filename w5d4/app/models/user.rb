@@ -1,15 +1,16 @@
 class User < ApplicationRecord
 
-    belongs_to :enrollment,
+    has_many :enrollments,
         primary_key: :id,
         foreign_key: :student_id,
         class_name: :Enrollment
 
+    #enrolled courses
+    has_many :enrolled_courses,
+        through: :enrollments,
+        source: :course
 
 end
-
-
-
 
 
 # class Dog
