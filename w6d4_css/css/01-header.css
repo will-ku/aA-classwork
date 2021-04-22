@@ -1,0 +1,32 @@
+/* PHASE 1: Header */
+
+body {
+    font-weight: 300;
+    font-size: 16 px;
+}
+
+.header {
+
+}
+
+.header-nav {
+
+    display: flexbox;
+    flex-direction:row-reverse;
+
+}
+
+.header-logo {
+
+}
+
+.header-logo:hover{
+    background-color: black;
+}
+
+.header-list {
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+
+}
