@@ -10,11 +10,11 @@
 class User < ApplicationRecord
     validates :username, presence:true, uniqueness:true
 
-    has_many :artworks,
+    has_many :artworks, dependent: :destroy,
     foreign_key: :artist_id,
     class_name: :Artwork
 
-    has_many :viewed_artworks #artworks shared with this user
+    has_many :viewed_artworks, dependent: :destroy, #artworks shared with this user
         foreign_key: :viewer_id,
         class_name: :ArtworkShare
 
@@ -23,6 +23,6 @@ class User < ApplicationRecord
         source: :viewer
 
     has_many :shared_artworks, #set of art that have been shared with this user
-        through: :viewed_artworks
+        through: :viewed_artworks,
         source: :artwork
 end
