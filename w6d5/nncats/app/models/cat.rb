@@ -3,6 +3,7 @@
 # Table name: cats
 #
 #  id          :bigint           not null, primary key
+
 #  birth_date  :date             not null
 #  color       :string           not null
 #  name        :string           not null

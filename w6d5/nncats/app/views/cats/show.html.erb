@@ -18,3 +18,6 @@
         <td><%=@cat.description%></td>
     </tr>
 </table>
+
+<a href="<%= edit_cat_url(@cat) %>">Edit <%= @cat.name %></a>
+<a href="<%= cats_url %>">Home</a>

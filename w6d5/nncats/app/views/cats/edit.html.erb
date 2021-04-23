@@ -1,9 +1,11 @@
-<h2>Add a cat yo!</h2>
+<h2>Edit <%= @cat.name %>yo!</h2>
 
 
-<form action=<%=cats_url%> method="post">
+<form action=<%= cat_url(@cat) %> method="post">
+    <input type="hidden" name="_method" value="PATCH">
+
     <label for="name">Name: 
-        <input type="text" id="name" name="cat[name]" value=<%=@cat.name%>>
+        <input type="text" id="name" name="cat[name]" value=<%= @cat.name %>>
     </label>
     <br>
     <label for="sex">
@@ -11,21 +13,19 @@
         <label>Female</label>
         <input type="radio" id="sex" name="cat[sex]" value='f' <%= @cat.sex == "f" ? "checked" : "" %>>
         <label>Male</label>
-        <input type="radio" id="sex" name="cat[sex]" value='m' <%= @cat.sex == 'm' ? 'checked' : '' %>>
+        <input type="radio" id="sex" name="cat[sex]" value='m' <%= @cat.sex == "m" ? "checked" : "" %>>
     </label>
     <br>
     <select name=cat[color]>
         <label>Color</label>
         <option disable selected>-- Select a color yo --</option>
-        <option value="white" <%= @cat.color == 'white' ? 'selected' : '' %>>White</option>
+        <option value="white" <%= @cat.color == "white" ? "selected" : "" %>>White</option>
         <option value="grey" <%= @cat.color == "grey" ? "selected" : "" %>>Grey</option>
         <option value="brown" <%= @cat.color == "brown" ? "selected" : "" %>>Brown</option>
         <option value="black" <%= @cat.color == "black" ? "selected" : "" %>>Black</option>
     </select>
       <label for="description">Description 
-        <textarea name="cat[description]" id="description" cols="10" rows="3">
-         <%= @cat.description %>
-        </textarea>
+        <textarea name="cat[description]" id="description" cols="20" rows="5"><%= @cat.description %></textarea>
       </label>
     <br>
     <label for="birth_date">Date</label>
@@ -33,5 +33,5 @@
            name="cat[birth_date]"
            id="birth_date"
            value="<%= @cat.birth_date %>">
-    <input type="submit" value="Create a cat, yo">
+    <input type="submit" value="Update <%= @cat.name %> yo!">
 </form>
