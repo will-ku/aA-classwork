@@ -1,0 +1,30 @@
+<h2>Add a cat yo!</h2>
+
+
+<form action=<%=cats_url%> method="post">
+    <label for="name">Name: 
+        <input type="text" id="name" name="cat[name]" value=<%=@cat.name%>>
+    </label>
+    <br>
+    <label for="sex">
+        Sex:<%="\t"%>
+        <label>Female</label>
+        <input type="radio" id="sex" name="cat[sex]" value=<%=@cat.sex == "f" ? "checked" : ""%>>
+        <label>Male</label>
+        <input type="radio" id="sex" name="cat[sex]" value=<%=@cat.sex == "m" ? "checked" : ""%>>
+    </label>
+    <br>
+    <select name=cat[color]>
+        <label>Color</label>
+        <%['white','grey','brown','black'].each do |color|%>
+        <%'selected' if @cat.color == color %>
+        <%end%>
+        <option disable selected>-- Select a color yo --</option>
+        <option value="white">White</option>
+        <option value="grey">Grey</option>
+        <option value="brown">Brown</option>
+        <option value="black">Black</option>
+    </select>
+    <br>
+    <input type="submit" value="Create a cat, yo">
+</form>
