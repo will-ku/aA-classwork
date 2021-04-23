@@ -11,7 +11,7 @@
 #
 class Artwork < ApplicationRecord
     validates :title, :image_url, :artist_id, presence: true
-    validates :artist_id, uniqueness: true
+    # validates :artist_id, uniqueness: true
     validates :title, uniqueness: { scope: :artist_id, message: "one art."}
 
     belongs_to :artist,
@@ -21,5 +21,5 @@ class Artwork < ApplicationRecord
     has_many :viewers,
         foreign_key: :artwork_id,
         class_name: :Artwork
-        
+
 end
