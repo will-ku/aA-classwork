@@ -15,4 +15,6 @@ class Cat < ApplicationRecord
     validates :birth_date, :description, presence: true
     validates :name, uniqueness: true
     validates :sex, inclusion: {:in => ['m','f']}
+    validates :color, inclusion: { :in => ['white', 'grey', 'brown', 'black'] }
+
 end
