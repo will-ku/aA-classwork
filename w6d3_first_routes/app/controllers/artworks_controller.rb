@@ -1,11 +1,11 @@
 class ArtworksController < ApplicationController
     def index
-        if params.has_key?(:artist_id)
-            artworks = Artwork.where(artist_id: params[:artist_id])
+        if params.has_key?(:artist_id) #rails magic
+            artwork = Artwork.where(artist_id: params[:artist_id])
         else
-            render json: artwork.errors.full_messages, status: :unprocessable_entity
+            # render json: artwork.errors.full_messages, status: :unprocessable_entity
         end
-        render json: artworks
+        render json: artwork
     end
 
     def create
