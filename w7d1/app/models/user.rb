@@ -10,7 +10,7 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
-  validates :username, presence: true, uniqueness: true
+  validates :user_name, presence: true, uniqueness: true
   validates :password_digest, presence: { message: 'Password can\'t be blank'}
   validates :session_token, presence: true, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
@@ -19,13 +19,13 @@ class User < ApplicationRecord
   attr_reader :password
 
   def self.find_by_credentials(username, password)
-    user = User.find_by(username: username)
+    user = User.find_by(user_name: username)
     return user if user && BCrypt::Password.new(user.password_digest).is_password?(password)
     nil
   end
 
   def is_password?(password)
-    BCrypt::Password.new(user.password_digest).is_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
   def self.generate_session_token

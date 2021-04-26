@@ -19,7 +19,7 @@ class CatRentalRequest < ApplicationRecord
     class_name: 'Cat' 
 
   def overlapping_requests  # CatRentalRequest.overlapping_requests(request) 
-    CatRentalRequest.where.not(our_start: self.start_date, our_end: self.end_date,
-      'cat_rental_requests.start_date > :our_end OR cat_rental_requests.end_date < :our_start')
+    CatRentalRequest.select(:id).where.not(:our_start => self.start_date, :our_end => self.end_date, 
+    'cat_rental_requests.start_date >' :our_end 'OR cat_rental_requests.end_date < ' :our_start)
   end
 end
