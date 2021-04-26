@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
 
-    def new #this is the login screen?
-        redirect_to new_session_url
+    def new
+        # redirect_to new_session_url
+        render :new
+        # new renders our "new" template
+        # Session#new is the login page
     end
 
     def create

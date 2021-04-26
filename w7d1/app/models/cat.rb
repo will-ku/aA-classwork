@@ -10,6 +10,7 @@
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  user_id     :integer          not null
 #
 require 'action_view'
 
@@ -29,6 +30,10 @@ class Cat < ApplicationRecord
   has_many :rental_requests,
     class_name: :CatRentalRequest,
     dependent: :destroy
+
+  belongs_to :freak,
+    foreign_key: :user_id,
+    class_name: :User
 
   def age
     time_ago_in_words(birth_date)
