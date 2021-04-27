@@ -1,10 +1,15 @@
 class CatsController < ApplicationController
+  before_action :set_current_cat
   before_action :owner?, only: [:edit, :update]
+  
 
   def owner?
-    if !self.user_id == current_user.id
+    # render json: Cat.find_by(id: params[:id])
+    # return
+    if !current_cat.user_id == current_user.id
+      render :index
       # render plain: "not your cat"
-      redirect_to cats_url
+      # redirect_to cats_url
       # cat.errors.full_messages
     end
   end 
@@ -25,7 +30,7 @@ class CatsController < ApplicationController
   end
 
   def create
-    @cat = Cat.new(cat_params, @current_user.id = :user_id)
+    @cat = Cat.new(cat_params) #, @current_user.id = :user_id)
     if @cat.save
       redirect_to cat_url(@cat)
     else
@@ -35,9 +40,11 @@ class CatsController < ApplicationController
   end
 
   def edit
-    @cat = current_user.cats.where("self.id = #{params[:id]}")
+    @cat = Cat.find[params[:id]]
+    # @cat = current_user.cats.where("current_cat.id = #{params[:id]}")
+    render json: "#{@cat}"
     # @cat = Cat.find_by(params[:id])
-    render :edit
+    # render :edit
   end
 
   def update
@@ -48,6 +55,14 @@ class CatsController < ApplicationController
       flash.now[:errors] = @cat.errors.full_messages
       render :edit
     end
+  end
+  
+  def current_cat
+    @current_cat
+  end
+
+  def set_current_cat
+    @current_cat = Cat.find_by(id: params[:id])
   end
 
   private

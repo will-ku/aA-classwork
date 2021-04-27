@@ -1,7 +1,11 @@
 class CatRentalRequestsController < ApplicationController
   def approve
-    current_cat_rental_request.approve!
-    redirect_to cat_url(current_cat)
+    if self.freaks.id == current_user.id 
+        current_cat_rental_request.approve!
+        redirect_to cat_url(current_cat)
+    else
+        render plain: "Nope not allowed."
+    end  
   end
 
   def create
@@ -16,8 +20,12 @@ class CatRentalRequestsController < ApplicationController
   end
 
   def deny
-    current_cat_rental_request.deny!
-    redirect_to cat_url(current_cat)
+    if self.freaks.id == current_user.id 
+      current_cat_rental_request.deny!
+      redirect_to cat_url(current_cat)
+    else
+      render plain: "Nope not allowed."
+    end
   end
 
   def new
