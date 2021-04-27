@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>W7d2MusicApp</title>
+    <title>Music App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,16 @@
   </head>
 
   <body>
+  <% if logged_in? %>
+    <h2>Hello<%= current_user.name %></h2>
+    <form action="session_url" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Logout">
+    </form>
+  <% else %>
+    <a href="new_session_url">Login</a>
+  <% end %>
     <%= yield %>
   </body>
 </html>
