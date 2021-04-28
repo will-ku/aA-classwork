@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  # before_action :set_user, only: %i[ show edit update destroy ]
 
   # GET /users or /users.json
-  # def index
-  #   @users = User.all
-  #   render :index
-  # end
+  def index
+    @users = User.all
+    render :index
+  end
 
   # GET /users/1 or /users/1.json
   def show
-    @user = user.find_by(id: params[:id])
+    @user = User.find_by(id: params[:id])
     render :show
   end
 
@@ -19,18 +19,20 @@ class UsersController < ApplicationController
     render :new
   end
 
-  # GET /users/1/edit
-  def edit
+  def user_params
+      params.require(:user).permit(:email, :password)
   end
+  # # GET /users/1/edit
+  # def edit
+  # end
 
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
 
     if @user.save
-      debugger
       login(@user)
-      redirect_to user_url(url)
+      redirect_to user_url(@user)
     else
       redirect_to new_user_url
     end
@@ -65,7 +67,5 @@ class UsersController < ApplicationController
     # end
 
     # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:email, :password)
-    end
+    
 end

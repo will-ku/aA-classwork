@@ -1,38 +1,44 @@
 class User < ApplicationRecord
     validates :email, :session_token, presence: true, uniqueness: true
     validates :password_digest, presence: true
-    after_initialize :ensure_session_token
+    validates :password, length: { minimum: 6, allow_nil: true }
+    before_validation :ensure_session_token
+    
 
     #SPIRE
     attr_reader :password
 
-    def self.find_by_credentials(username, password)
-        user = User.find_by(username: username)
+    def self.find_by_credentials(email, password)
+        user = User.find_by(email: email)
         return user if user && user.is_password?(password)
         nil
     end
 
-    def generate_session_token
-        token = SecureRandom::urlsafe_base64
-    end
+    # def generate_session_token
+    #     self.session_token = SecureRandom::urlsafe_base64
+    # end
 
     def ensure_session_token
-        self.session_token ||= generate_session_token
+        self.session_token ||= SecureRandom::urlsafe_base64
     end
 
     def reset_session_token!
-        self.session_token = generate_session_token
+        self.session_token = SecureRandom::urlsafe_base64
         self.save!
         self.session_token
     end
 
     def password=(password)
-        self.password = BCrypt::Password.create(password)
-        @password = password
+        self.password_digest = BCrypt::Password.create(password)
+        @password = password 
     end
+    # this gets called when you are creating an instance of user
+    # this gets ran before "before_validation :ensure_session_token"
+    # @password only exists during that request, 
+    # doesn't save to db
 
     def is_password?(password)
-        password_obj = BCrypt::Password.create(self.password_digest)
+        password_obj = BCrypt::Password.new(self.password_digest)
         password_obj.is_password?(password)
     end
 
