@@ -1,0 +1,62 @@
+#gear-dropdown-icon {
+    position: relative;
+    padding: 5px 10px;
+    // top: 15px;
+    // right: 50px;
+}
+
+
+.gear-dropdown {
+    display: none;
+    border: 1px solid #f7f7f5;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    padding: 10px;
+    width: 150px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: -1px 4px 6px 1px rgba(0, 0, 0, 0.09);
+    z-index: 2;
+}
+
+
+#gear-dropdown-icon:hover .gear-dropdown{
+    display: block;
+}
+
+.editions > li {
+    padding: 5px 0px 5px 0px;
+}
+
+.editions {
+    border-bottom: 1px solid #e2e2e2;
+    
+}
+
+span {
+    font-weight: 900;
+}
+
+.help > li {
+    padding: 5px 0px 5px 0px;
+    color: #326891;
+}
+
+.help > li:hover {
+    text-decoration: underline;
+}
+
+.help {
+    padding: 5px 0px 5px 0px;
+}
+
+.editions li:hover {
+    padding: 3px 3px 3px 3px;
+    display: block;
+    background-color: #e2e2e2;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+
