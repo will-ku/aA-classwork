@@ -12,7 +12,7 @@
 
     <form action="<%= new_session_url %>" method="POST">
       <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Sign Out">
+      <button type="submit" value="Sign Out" />
    </form>
 
     <% if flash[:errors] %>

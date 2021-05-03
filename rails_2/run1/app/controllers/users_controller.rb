@@ -24,10 +24,10 @@ class UsersController < ApplicationController
     end
     
     def create
-        user = User.new(user_params)
+        @user = User.new(user_params)
         
-        if user.save
-            login(user)
+        if @user.save
+            login(@user)
             redirect_to users_url
         else   
             flash[:errors] = ["Password is too short (minimum is 6 characters)"]
