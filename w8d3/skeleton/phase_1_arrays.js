@@ -34,3 +34,29 @@ Array.prototype.twoSum = function() {
 // 	}
 // 	return result;
 // }
+
+// [  
+//   [1,2,3],
+//   [4,5,6],
+//   [7,8,9]
+// ]
+
+// [
+//   [1,4,7]
+//   [2,5,8]
+//   [3,6,9]
+// ]
+
+Array.prototype.transpose = function() {
+  const transposed = [];
+
+  for (let i = 0; i < this.length; i++) {
+    const row = [];
+    for (let j = 0; j < this.length; j++) {
+      row.push(this[j][i]);
+    }
+    transposed.push(row);
+  }
+
+  return transposed;
+}
