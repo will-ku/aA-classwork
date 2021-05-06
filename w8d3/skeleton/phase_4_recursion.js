@@ -85,3 +85,22 @@ function bsearch(arr, target) {
   }
 
 }
+
+
+function mergesort(arr) {
+    function merge(left, right) {
+
+        const result = []
+
+        while !left.empty || !right.empty
+
+
+    }
+
+    if (arr.length === 1) return [arr[0]]
+
+    let middle = Math.floor(arr.length / 2)
+    let left = mergesort(arr.slice(0,middle))
+    let right = mergesort(arr.slice(middle,arr.length))
+    return merge(left,right)
+}
