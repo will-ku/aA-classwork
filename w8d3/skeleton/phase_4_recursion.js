@@ -92,9 +92,15 @@ function mergesort(arr) {
 
         const result = []
 
-        while !left.empty || !right.empty
+        while (left.length !== 0 && right.length !== 0) {
+          if (left[0] >= right[0]) {
+            result.push(right.shift())
+          } else if (left[0] < right[0]) {
+            result.push(left.shift())
+          }
+        }
 
-
+        return result.concat(left).concat(right)
     }
 
     if (arr.length === 1) return [arr[0]]
