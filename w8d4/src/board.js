@@ -86,7 +86,6 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip=[]){
   if (!this.isValidPos(newPos)) {
     return [];
   }
-
   let nextPiece = this.getPiece(newPos);
   if (!nextPiece) {
     return [];
@@ -97,7 +96,6 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip=[]){
   else {
     return this._positionsToFlip(newPos, color, dir, piecesToFlip.concat([newPos]))
   }
-
 };
 
 /**
@@ -106,6 +104,16 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip=[]){
  * color being flipped.
  */
 Board.prototype.validMove = function (pos, color) {
+  if(this.isOccupied(pos)) {
+    return false;
+  }
+  let flips = Board.DIRS.map(dir => this._positionsToFlip(pos,color,dir));
+  for(let i = 0; i < flips.length; i++) {
+    if(flips[i].length > 0) {
+      return true;
+    }
+  }
+  return false;
 };
 
 /**
@@ -115,6 +123,18 @@ Board.prototype.validMove = function (pos, color) {
  * Throws an error if the position represents an invalid move.
  */
 Board.prototype.placePiece = function (pos, color) {
+  if(!this.validMove(pos,color)) {
+    throw new Error("Invalid move!");
+  }
+  let flips = [];
+  for(let i = 0; i < Board.DIRS.length; i++) {
+    let flipPositions = this._positionsToFlip(pos,color,Board.DIRS[i]);
+    flipPositions.forEach(pos => flips.push(pos));
+  }
+  this.grid[pos[0]][pos[1]] = new Piece(color);
+  for(let j = 0; j < flips.length; j++) {
+    this.getPiece(flips[j]).flip();
+  }
 };
 
 /**
