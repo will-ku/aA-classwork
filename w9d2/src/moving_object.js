@@ -10,7 +10,7 @@ MovingObject.prototype.draw = function(ctx) {
     ctx.arc(this.pos[0], this.pos[1], this.radius, 0, Math.PI * 2, true);
     ctx.fillStyle = this.color;
     ctx.fill();
-    ctx.strokeStyle = 'blue';
+    ctx.strokeStyle = 'black';
     ctx.lineWidth = 10;
     ctx.stroke();
     console.log(ctx)

@@ -3,20 +3,20 @@ window.MovingObject = MovingObject;
 // takes an event(DOMContentLoaded) and a callback (event) which is called after
 // event occurs
 document.addEventListener("DOMContentLoaded", function () {
-  const mover = new MovingObject({
-    pos: [10, 10],
-    vel: [10, 10],
-    radius: 5,
-    color: "black"
-  });
+    const mover = new MovingObject({
+        pos: [200, 200],
+        vel: [10, 10],
+        radius: 100,
+        color: "blue"
+    });
+    
+    const canvasEl = document.getElementById("game-canvas");
+    canvasEl.width = window.innerWidth;
+    canvasEl.height = window.innerHeight;
+    
+    const ctx = canvasEl.getContext("2d");
+    console.log(canvasEl);
+    window.ctx = ctx;
 
-  const canvasEl = document.getElementById("game-canvas");
-  console.log(canvasEl);
-  canvasEl.width = window.innerWidth;
-  canvasEl.height = window.innerHeight;
-
-  const ctx = canvasEl.getContext("2d");
-//   window.ctx = ctx;
-
-  mover.draw(ctx);
+    mover.draw(ctx);
 });
