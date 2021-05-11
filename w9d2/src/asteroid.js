@@ -1,12 +1,15 @@
-const MovingObject = require("./moving_object");
-const Util = require("./util");
+const MovingObject = require("./moving_object.js");
+const Util = require("./util.js");
+const Game = require("./game");
+const GameView = require("./game_view");
+
 
 function Asteroid(options) {
   this.RADIUS = "20";
   this.COLOR = "purple";
-//   this.pos = options.pos;
-//   this.radius = options.RADIUS;
-//   this.color = options.COLOR;
+  //   this.pos = options.pos;
+  //   this.radius = options.RADIUS;
+  //   this.color = options.COLOR;
 
   MovingObject.call(this, {
     pos: options.pos,
@@ -17,4 +20,4 @@ function Asteroid(options) {
 }
 
 Util.inherits(Asteroid, MovingObject);
-module.exports = Asteroid
+module.exports = Asteroid;

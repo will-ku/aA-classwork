@@ -1,6 +1,9 @@
 const MovingObject = require("./moving_object.js");
 const Asteroid = require("./asteroid.js");
-const Util = require("./util.js")
+const Util = require("./util.js");
+const Game = require("./game");
+const GameView = require("./game_view");
+
 window.MovingObject = MovingObject;
 // takes an event(DOMContentLoaded) and a callback (event) which is called after
 // event occurs
@@ -11,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     radius: 100,
     color: "blue",
   });
-  const aster = new Asteroid({pos: [100,100]});
+  const aster = new Asteroid({ pos: [100, 100] });
   const canvasEl = document.getElementById("game-canvas");
   canvasEl.width = window.innerWidth;
   canvasEl.height = window.innerHeight;
@@ -22,4 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   mover.draw(ctx);
   aster.draw(ctx);
+
+  const game1 = new Game();
+  new GameView(ctx, game1).start();
 });
