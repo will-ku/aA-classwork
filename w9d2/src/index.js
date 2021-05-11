@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     radius: 100,
     color: "blue",
   });
-  const aster = new Asteroid();
+  const aster = new Asteroid({pos: [100,100]});
   const canvasEl = document.getElementById("game-canvas");
   canvasEl.width = window.innerWidth;
   canvasEl.height = window.innerHeight;
@@ -21,4 +21,5 @@ document.addEventListener("DOMContentLoaded", function () {
   window.ctx = ctx;
 
   mover.draw(ctx);
+  aster.draw(ctx);
 });

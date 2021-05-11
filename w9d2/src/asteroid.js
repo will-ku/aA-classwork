@@ -16,4 +16,5 @@ function Asteroid(options) {
   });
 }
 
-module.export = Asteroid
+Util.inherits(Asteroid, MovingObject);
+module.exports = Asteroid
