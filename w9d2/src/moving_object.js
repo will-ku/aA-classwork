@@ -13,6 +13,7 @@ MovingObject.prototype.draw = function(ctx) {
     ctx.strokeStyle = 'blue';
     ctx.lineWidth = 10;
     ctx.stroke();
+    console.log(ctx)
 }
 
 module.exports = MovingObject;
