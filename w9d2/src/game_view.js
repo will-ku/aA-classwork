@@ -9,9 +9,11 @@ function GameView(ctx, game) {
 }
 
 GameView.prototype.start = function () {
+  let that = this;
+
   setInterval(function () {
-    game.moveObjects;
-    game.draw;
+    that.game.moveObjects();
+    that.game.draw(this.ctx);
   }, 20);
 };
 
