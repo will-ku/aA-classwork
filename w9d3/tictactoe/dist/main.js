@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\"); // require appropriate file\nconst Game = __webpack_require__(/*! ../../tictactoe_solution/game */ \"../tictactoe_solution/game.js\")// require appropriate file\n\n  $(() => {\n    // Your code here\n    const game = new Game();\n    const $container = $('.ttt')\n    const view = new View(game, $container);\n\n  });\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\"); // require appropriate file\nconst Game = __webpack_require__(/*! ../../tictactoe_solution/game */ \"../tictactoe_solution/game.js\")// require appropriate file\n\n  $(() => {\n    // Your code here\n    const game = new Game();\n    const $container = $('.ttt')\n    const view = new View(game, $container);\n    view.bindEvents();\n  });\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\");
   \*************************/
 /***/ ((module) => {
 
-eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el;\n\n    this.setupBoard();\n  }\n\n  bindEvents() {\n    $().on('click', game.playMove())\n    // playMove takes in a position\n    // we might want to save position to each <li>\n  }\n\n  makeMove($square) {}\n\n  setupBoard() {\n    let $ul = $('<ul></ul>');\n\n    for (let i = 0; i < 9; i++) {\n      let $li = $('<li></li>')\n       \n      let x = Math.floor(i / 3);\n      let y = i % 3\n\n      // i / 3 = would be x; 8 / 3 = 2\n      // i % 3 = would be y; 8 % 3 = 2\n\n      $ul.append($li)\n    }\n\n    this.$el.append($ul);\n    $ul.addClass('board')\n    $ul.children().addClass('cell')\n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el;\n\n    this.setupBoard();\n    //this.bindEvents();\n  }\n\n  bindEvents() {\n    $(\"li.cell\").on('click', el => {\n      const $li = $(el.currentTarget);\n      const pos = $li.data(\"pos\");\n\n      if (!this.game.board.isEmptyPos(pos)){\n          alert(\"Invalid Move\");\n          return;\n      }\n      this.makeMove($li);\n      this.game.playMove(pos);\n\n      if (this.game.isOver()) {\n        alert(\"Winner \" + this.game.winner());\n      }\n    });\n    // playMove takes in a position\n    // we might want to save position to each <li>\n  }\n\n  makeMove($square) {\n    $square.addClass(\"marked\");\n    $square.text(this.game.currentPlayer);\n  }\n\n  setupBoard() {\n    let $ul = $('<ul></ul>');\n\n    for (let i = 0; i < 9; i++) {\n      let $li = $('<li></li>');\n       \n      let x = Math.floor(i / 3);\n      let y = i % 3;\n      // $li.addClass(\"unmarked\");\n      $li.data(\"pos\", [x,y]);\n\n      // i / 3 = would be x; 8 / 3 = 2\n      // i % 3 = would be y; 8 % 3 = 2\n\n      $ul.append($li);\n    }\n\n    this.$el.append($ul);\n    $ul.addClass('board')\n    $ul.children().addClass('cell')\n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ }),
 

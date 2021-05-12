@@ -6,5 +6,5 @@ const Game = require('../../tictactoe_solution/game')// require appropriate file
     const game = new Game();
     const $container = $('.ttt')
     const view = new View(game, $container);
-
+    view.bindEvents();
   });
