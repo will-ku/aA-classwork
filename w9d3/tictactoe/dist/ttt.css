@@ -1,0 +1,18 @@
+.board {
+    display: flex;
+    width: 606px;
+    flex-wrap: wrap;
+}
+
+.cell:hover {
+    background-color: yellow;
+}
+
+.cell {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    list-style: none;
+    background-color: gray;
+    
+}
