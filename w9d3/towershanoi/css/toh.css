@@ -18,6 +18,10 @@ ul {
     align-items: center;
 }
 
+ul:hover {
+    border-bottom: 15px solid lightblue;
+}
+
 ul.current {
     border-bottom: 15px solid green;
 }
