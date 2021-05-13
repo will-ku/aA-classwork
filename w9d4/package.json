@@ -6,7 +6,7 @@
     "webpack": "webpack --mode=development --watch"
   },
   "dependencies": {
-    "webpack": "^4.6.0"
+    "webpack": "^4.46.0"
   },
   "devDependencies": {
     "webpack-cli": "^3.3.4"
