@@ -60,3 +60,26 @@ table {
 	background-color: orange;
 	padding: 1em;
 }
+
+.tabs {
+	width: 150px;
+	border: 1px solid black;
+}
+
+.tabs ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.tabs li {
+	border: 1px solid black;
+	padding: 0.5em;
+	border-top-right-radius: 0.5em;
+	border-top-left-radius: 0.5em;
+}
+
+article {
+	padding: 0.5em;
+	background-color: aqua;
+}
