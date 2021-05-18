@@ -5,12 +5,11 @@ class Header extends React.Component {
 
     constructor(props) {
         super(props)
-
     }
 
     render() {
         return (
-            <li>
+            <li onClick={this.props.setSelectedTab}>
                 {this.props.title}
             </li>
         )
