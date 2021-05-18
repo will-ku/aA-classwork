@@ -2,11 +2,12 @@ import React from 'react';
 
 class Clock extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             date: new Date()
         }
-        this.tick = this.tick.bind(this)
+        this.tick = this.tick.bind(this);
+        this.timerId = null;
         // this.tick != this.tick
         // located on the instance vs Clock.prototype
     }
@@ -14,7 +15,10 @@ class Clock extends React.Component {
 
     render() {
         return (
-            <h1>this is clock.</h1>
+            <div class='clock'>
+                <h1>this is time:</h1>
+                <p>{this.state.date.getHours()}:{this.state.date.getMinutes()}:{this.state.date.getSeconds()}</p>
+            </div>
         )
     }
 
@@ -25,9 +29,12 @@ class Clock extends React.Component {
     }
 
     componentDidMount() {
-        setInterval(this.tick, 1000)
+        this.timerId = setInterval(this.tick, 1000);
     }
 
+    componentWillUnmount() {
+        clearInterval(this.timerId);
+    }
 }
 
 export default Clock;
