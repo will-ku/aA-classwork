@@ -69,7 +69,7 @@ table {
 .tabs ul {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	/* justify-content: space-around; */
 }
 
 .tabs li {
@@ -77,6 +77,17 @@ table {
 	padding: 0.5em;
 	border-top-right-radius: 0.5em;
 	border-top-left-radius: 0.5em;
+	width: 50px;
+}
+
+.tabs li:hover {
+	color: white;
+	background-color: black;
+	cursor: pointer;
+}
+
+.tabs .selected {
+	border-bottom: 1px solid aqua;
 }
 
 article {

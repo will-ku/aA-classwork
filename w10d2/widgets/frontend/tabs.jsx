@@ -5,7 +5,6 @@ import Header from './header';
 class Tabs extends React.Component {
     constructor(props) {
         super(props)
-        console.log(props)
         this.state = {
             selectedTab: 0,
         }
@@ -21,10 +20,19 @@ class Tabs extends React.Component {
 
     render() {
         const headers = this.props.input.map( (tab, i) => {
-            return <Header 
+            console.log(this.state.selectedTab, i)
+            if (this.state.selectedTab === i) {
+                return <Header 
+                    selected={true}
                     key={i} 
-                    title="{tab.title}" 
+                    title={tab.title}
                     setSelectedTab={this.setSelectedTab(i)}/>
+            } else {
+                return <Header 
+                    key={i} 
+                    title={tab.title}
+                    setSelectedTab={this.setSelectedTab(i)}/>
+            }
         })
         return (
             <div className = "tabs">
