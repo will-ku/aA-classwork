@@ -14,12 +14,14 @@ class Weather extends React.Component {
         if (this.state.data) {
             console.log(this.state.data);
             return (
-                <p>Temperature: {this.state.data.main.temp}°K</p>
+                <h2 className = "weather">Temperature: {this.state.data.main.temp}°K
+                <br />
+                Location: {this.state.data.name}</h2>
             )
         }
         return (
             <div>
-            <h1>This is weather.</h1>
+            <h2 className = "weather"> Loading...</h2>
             {weather}
             </div>
         )

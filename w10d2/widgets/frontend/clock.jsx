@@ -15,10 +15,9 @@ class Clock extends React.Component {
 
     render() {
         return (
-            <div className='clock'>
-                <h1>this is time:</h1>
+            <h2 className='clock'> Current Time:
                 <p>{this.state.date.getHours()}:{this.state.date.getMinutes()}:{this.state.date.getSeconds()}</p>
-            </div>
+            </h2>
         )
     }
 

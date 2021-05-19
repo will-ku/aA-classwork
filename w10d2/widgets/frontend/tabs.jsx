@@ -18,7 +18,7 @@ class Tabs extends React.Component {
 
     render() {
         const headers = this.props.input.map( (tab, i) => {
-            console.log(this.state.selectedTab, i)
+            // console.log(this.state.selectedTab, i)
             if (this.state.selectedTab === i) {
                 return <Header 
                     selected={true}
@@ -33,15 +33,15 @@ class Tabs extends React.Component {
             }
         })
         return (
-            <div className = "tabs">
-                <h1>Tabs {this.state.selectedTab}</h1>
+            <h2 className = "tabs">
+                {/* <div> {this.state.selectedTab}</div> */}
                 <ul>
                     {headers}
                 </ul>
                 <article>
-                    {this.props.input[this.state.selectedTab].content}
+                    {/* {this.props.input[this.state.selectedTab].content} */}
                 </article>
-            </div>
+            </h2>
         )
     }
 }

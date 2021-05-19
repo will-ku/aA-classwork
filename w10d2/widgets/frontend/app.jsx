@@ -14,8 +14,8 @@ function App () {
     return (
         <div>
             <Clock/>
-            <Tabs input={tabsInput} />
             <Weather />
+            <Tabs input={tabsInput} />
         </div>
     )
 }
