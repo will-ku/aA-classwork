@@ -30,23 +30,31 @@ class Weather extends React.Component {
     }
 
     pollWeather(pos) {
+        // all of this will be used to fill out request.open
         let lat = pos.coords.latitude;
         let lng = pos.coords.longitude;
+
         const apikey = 'f816d7f39052e3a98b21952097a43076';
-	    let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apikey}`;
+	      let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apikey}`;
+        
         let request = new XMLHttpRequest();
-        let that = this;
+        
         request.open('GET', url, true);
-        request.onload = function() {
-            if (this.status >= 200) {
-                that.setState({
-                    data: JSON.parse(this.response)
-                });
-            } else {
-                console.log(this.status);
-            }
+        
+        //this is when we receive the request and we need that = this
+        // self sufficient - when it tries to carry out the action, it has everything it needs aka 'that'
+        let that = this;
+        request.onload = function() { 
+          if (this.status === 200) {
+            that.setState({
+              data: JSON.parse(this.response)
+            });
+          } else {
+            console.log(this.status);
+          }
         };
-        request.send();
+        
+        request.send(); // this executes first, but we still need to define onload before sending. that is why we like to put this at the bottom
     }
 }
 

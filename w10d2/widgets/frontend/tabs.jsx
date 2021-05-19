@@ -12,9 +12,7 @@ class Tabs extends React.Component {
 
     setSelectedTab(tabIdx) {
         return () => {
-            this.setState({
-                selectedTab: tabIdx
-            })
+            this.setState({selectedTab: tabIdx})
         }
     }
 
