@@ -29863,8 +29863,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 
 
-document.addEventListener("DOMContentLoaded", function () {// const header = <h1>Todos App</h1>
-  // ReactDOM.render(header, document.getElementById("content"))
+document.addEventListener("DOMContentLoaded", function () {
+  var header = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Todos App");
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(header, document.getElementById("content"));
 });
 })();
 
