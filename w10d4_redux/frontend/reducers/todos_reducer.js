@@ -1,3 +1,5 @@
+import {RECEIVE_TODO, RECEIVE_TODOS} from "../actions/todo_actions"
+
 const initialState = {
   1: {
     id: 1,
@@ -14,7 +16,16 @@ const initialState = {
 };
 
 const todosReducer = (state = initialState, action) => {
+  Object.freeze(state)
+  const nextState = Object.assign({}, state)
   switch (action.type) {
+    case RECEIVE_TODOS:
+      console.log(nextState[action.todos.id])
+      console.log(action)
+      nextState[action.todos.id] = action.todos
+      console.log(nextState)
+      return nextState;
+    
     default:
       return state;
   }
