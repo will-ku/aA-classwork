@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const store = configureStore()
   window.store = store
   window.allTodos = allTodos
-  ReactDOM.render(<Root store={store}/>, document.getElementById("content"))
+  ReactDOM.render(<h1>Not Todos App</h1>, document.getElementById("content"))
   window.receiveTodos = receiveTodos
   window.receiveTodo = receiveTodo
 })
+
+  // < Root store = { store } />
