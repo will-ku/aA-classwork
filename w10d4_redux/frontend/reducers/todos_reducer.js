@@ -17,24 +17,23 @@ const initialState = {
 
 const todosReducer = (state = initialState, action) => {
   Object.freeze(state)
+  let nextState = {};
   switch (action.type) {
+    case RECEIVE_TODOS:
+      // let nextState = {}
+      action.todos.forEach((todo) => {
+        nextState[todo.id] = todo
+      })
+      return nextState;
+
     case RECEIVE_TODO: {
-      let nextState = Object.assign({}, state)
-      const {id, title, body, done} = action
-      nextState[id] = {id, title, body, done}
-      return nextState
+      let newTodo = {[action.todo.id]: action.todo}
+      // ** See below for object deconstruction info **
+      // let newTodo = {}
+      // newTodo[action.todo.id] = action.todo
+      return Object.assign({}, state, newTodo )
     }
 
-    case RECEIVE_TODOS:
-      const nextState = Object.assign({}, state)
-      action.todos.forEach((todo) => {
-        const {id, title, body, done} = todo
-        nextState[id] = {id, title, body, done}
-        // if you want value as key, you have to use bracket notation
-      })
-      // nextState[action.todos.id] = action.todos
-      return nextState;
-    
     default:
       return state;
   }
