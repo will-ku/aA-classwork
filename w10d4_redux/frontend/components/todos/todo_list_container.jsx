@@ -15,3 +15,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps  
 )(TodoList);
+
+// gets connected to TodoList.props
