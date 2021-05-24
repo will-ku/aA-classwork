@@ -9,7 +9,7 @@ const initialState = {
   },
   2: {
     id: 2,
-    title: "wash dog",
+    title: "wash mom",
     body: "with shampoo",
     done: true,
   },
