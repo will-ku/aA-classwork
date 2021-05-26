@@ -27,3 +27,20 @@ if @pokemon.items.length != 0
 else
   json.items ({})
 end
+
+=begin
+{
+  pokemon: {
+    id:
+
+  },
+  moves: {
+    1: {
+      id;
+    }
+  },
+  items: {
+    
+  }
+}
+=end
