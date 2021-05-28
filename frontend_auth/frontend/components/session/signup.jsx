@@ -10,6 +10,9 @@ class Signup extends React.Component {
     }
   }
 
+  handleInput(type) {
+    
+  }
   
 
   render() {
